@@ -1,10 +1,10 @@
 import React from 'react'
-  
-const Numbers = ({ persons }) => {
+
+const Numbers = ({ FilteredArray }) => {
     return (
         <div>
             <ul>
-                {persons.map(person =>
+                {FilteredArray.map(person =>
                     <li key={person.name}>{person.name}</li>
                     )}
             </ul>
