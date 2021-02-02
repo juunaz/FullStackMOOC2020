@@ -16,7 +16,7 @@ const SpecificCountry = ({ name, capital, population, languages, flag }) => {
   }
   
 
-const Countries = ({ FilteredArray, handleShowChange }) => {
+const Countries = ({ FilteredArray, setNewFilter }) => {
 
     if (FilteredArray.length > 10) {
       return  (
@@ -39,7 +39,7 @@ const Countries = ({ FilteredArray, handleShowChange }) => {
             <ul>
                 {FilteredArray.map(country =>
                     <li key={country.name}>{country.name}
-                    <button onChange={handleShowChange}>Show</button>
+                    <button onClick={() => setNewFilter(country.name)}>Show</button>  
                     </li>
                     )}
             </ul>

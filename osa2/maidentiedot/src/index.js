@@ -15,8 +15,6 @@ const Filter = (props) => {
 const App = () => {
   const [ countries, setCountries] = useState([]) 
   const [ newFilter, setNewFilter ] = useState('')
-  const [ showButton, setShowButton ] = useState(false)
-
 
   useEffect(() => {
     axios
@@ -32,14 +30,10 @@ const App = () => {
     setNewFilter(event.target.value)
   }
 
-  const handleShowChange = (event) => {
-    setShowButton(!showButton)
-  }
-
   return (
     <div>
       <Filter newFilter={newFilter} handleFilterChange={handleFilterChange} />
-      <Countries FilteredArray={FilteredArray} handleShowChange={handleShowChange} />
+      <Countries FilteredArray={FilteredArray} setNewFilter={setNewFilter}/>
     </div>
   )
 }
