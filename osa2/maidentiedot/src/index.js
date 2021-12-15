@@ -3,6 +3,8 @@ import axios from 'axios'
 import ReactDOM from 'react-dom';
 import Countries from './components/countries'
 
+const api_key = process.env.REACT_APP_API_KEY
+
 const Filter = (props) => {
 
   return (
@@ -13,7 +15,8 @@ const Filter = (props) => {
 }
 
 const App = () => {
-  const [ countries, setCountries] = useState([]) 
+  const [ countries, setCountries] = useState([])
+  const [ weathers, setWeathers] = useState([])
   const [ newFilter, setNewFilter ] = useState('')
 
   useEffect(() => {
@@ -21,6 +24,15 @@ const App = () => {
       .get('https://restcountries.eu/rest/v2/all')
       .then(response => {
         setCountries(response.data)
+      })
+  }, [])
+
+  useEffect(() => {
+    axios
+      .get(`http://api.weatherstack.com/current?access_key=${api_key}&query=Finland`)
+      .then(response => {
+        console.log(response.data)
+        setWeathers(response.data)
       })
   }, [])
 

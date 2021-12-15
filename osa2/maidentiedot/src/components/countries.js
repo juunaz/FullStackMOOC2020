@@ -16,7 +16,7 @@ const SpecificCountry = ({ name, capital, population, languages, flag }) => {
   }
   
 
-const Countries = ({ FilteredArray, setNewFilter }) => {
+const Countries = ({ FilteredArray, setNewFilter, setWeathers }) => {
 
     if (FilteredArray.length > 10) {
       return  (
@@ -29,7 +29,7 @@ const Countries = ({ FilteredArray, setNewFilter }) => {
       const {name, capital, population, languages, flag} = FilteredArray[0]
       return (
         <div>
-          <SpecificCountry name={name} capital={capital} population={population} languages={languages} flag={flag}/>
+          <SpecificCountry name={name} capital={capital} population={population} languages={languages} flag={flag} setWeathers={setWeathers}/>
         </div>
       ) 
     }
@@ -39,7 +39,7 @@ const Countries = ({ FilteredArray, setNewFilter }) => {
             <ul>
                 {FilteredArray.map(country =>
                     <li key={country.name}>{country.name}
-                    <button onClick={() => setNewFilter(country.name)}>Show</button>  
+                    <button onClick={() => setNewFilter(country.name)}>Show</button> 
                     </li>
                     )}
             </ul>
